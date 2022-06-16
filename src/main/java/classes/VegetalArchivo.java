@@ -62,42 +62,6 @@ public class VegetalArchivo extends Vegetal{
         return tipoVegetal;
     }
 
-    public void setTieneSemilla(boolean tieneSemilla) {
-        this.tieneSemilla = tieneSemilla;
-    }
-
-    public void setCalorias(double calorias) {
-        this.calorias = calorias;
-    }
-
-    public void setProteinas(double proteinas) {
-        this.proteinas = proteinas;
-    }
-
-    public void setGrasas(double grasas) {
-        this.grasas = grasas;
-    }
-
-    public void setCarbohidratos(double carbohidratos) {
-        this.carbohidratos = carbohidratos;
-    }
-
-    public void setPorcion(double porcion) {
-        this.porcion = porcion;
-    }
-
-    public void setIdVegetal(int idVegetal) {
-        this.idVegetal = idVegetal;
-    }
-
-    public void setNombreVegetal(String nombreVegetal) {
-        this.nombreVegetal = nombreVegetal;
-    }
-
-    public void setTipoVegetal(int tipoVegetal) {
-        this.tipoVegetal = tipoVegetal;
-    }
-    
     
     
 }

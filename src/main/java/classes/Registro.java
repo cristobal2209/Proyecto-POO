@@ -10,10 +10,10 @@ package classes;
  */
 public interface Registro {
     
-    public Object getUsuario();
-    public boolean getUsuarioExists();
+    public Object getUsuario(int idUsuario);
+    public boolean getUsuarioExists(int idUsuario);
     public boolean crearUsuario();
-    public boolean modificarUsuario();
-    public boolean eliminarUsuario();
-    public boolean mostrarUsuarios();
+    public boolean modificarUsuario(int idUsuario);
+    public boolean eliminarUsuario(int idUsuario);
+    public void imprimirUsuarios();
 }

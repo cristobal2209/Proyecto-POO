@@ -17,6 +17,10 @@ import java.util.Scanner;
 public class DatosVegetales implements Datos{
     
     private ArrayList<VegetalArchivo> ListaVegetales = new ArrayList<>();
+
+    public ArrayList<VegetalArchivo> getListaVegetales() {
+        return ListaVegetales;
+    }
     
     public boolean leerDatos() {
         String nombre;
