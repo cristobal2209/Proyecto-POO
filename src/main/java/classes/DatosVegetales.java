@@ -4,6 +4,7 @@
  */
 package classes;
 
+import static GUI.Principal.MAX_VEGETALES;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -49,7 +50,9 @@ public class DatosVegetales implements Datos{
         return true;
     }
     
-    public boolean mostrarDatos() {
-         
+    public void mostrarDatos() {
+        for (int i = 0; i < ListaVegetales.size(); i++) {
+            System.out.println("- "+ListaVegetales.get(i).getNombreVegetal());
+        }
     }
 }

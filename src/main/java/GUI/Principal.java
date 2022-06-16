@@ -10,6 +10,7 @@ package GUI;
  */
 public class Principal extends javax.swing.JFrame {
 
+    public static int MAX_VEGETALES = 6;
     /**
      * Creates new form Principal
      */

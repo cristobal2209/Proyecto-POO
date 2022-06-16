@@ -11,5 +11,5 @@ package classes;
 public interface Datos {
     
     public boolean leerDatos();
-    public boolean mostrarDatos();
+    public void mostrarDatos();
 }
