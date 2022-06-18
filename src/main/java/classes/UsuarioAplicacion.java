@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package classes;
 
 import java.util.ArrayList;
@@ -17,6 +14,7 @@ public class UsuarioAplicacion implements Usuario {
     private double masa, altura, imc=0;
     private int idUsuario;
 
+    //constructores
     public UsuarioAplicacion(int idUsuario, String nombre, String sexo, double masa, double altura) {
         this.nombre = nombre;
         this.sexo = sexo;
@@ -28,6 +26,7 @@ public class UsuarioAplicacion implements Usuario {
     public UsuarioAplicacion() {
     }
     
+    //getters
     public ArrayList<VegetalUsuario> getListaVegetalesConsumidos() {
         return ListaVegetalesConsumidos;
     }
@@ -56,6 +55,7 @@ public class UsuarioAplicacion implements Usuario {
         return idUsuario;
     }
 
+    //setters
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -80,38 +80,69 @@ public class UsuarioAplicacion implements Usuario {
         this.idUsuario = idUsuario;
     }
     
-    //para obtener el nombre, se deberia buscar con el id del vegetal, lo mismo con tipo
-    public boolean agregarVegetal(String nombre, int tipo) {
-        if(ListaVegetalesConsumidos.add(new VegetalUsuario(nombre, tipo)))
+    //metodos
+    /**
+     * Crea y añade un nuevo objeto VegetalUsuario consumido a la lista ListaVegetalesConsumidos 
+     * de un usuario.
+     * 
+     * @param nombreVegetal
+     * @param tipo
+     * @param idVegetal
+     * @return 
+     */
+    public boolean agregarVegetal(String nombreVegetal, int tipo, int idVegetal) {
+        if(ListaVegetalesConsumidos.add(new VegetalUsuario(nombreVegetal, tipo, idVegetal)))
             return true;
         else return false;    
     }
     
-    public boolean eliminarVegetal(String nombreVegetal) {
+    /**
+     * 
+     * @param idVegetalEliminar
+     * @return 
+     */
+    public boolean eliminarVegetal(int idVegetalEliminar) {
         for (int i = 0; i < ListaVegetalesConsumidos.size(); i++) {
-            if (nombreVegetal.equalsIgnoreCase(ListaVegetalesConsumidos.get(i).getNombreVegetal())) {
+            if (idVegetalEliminar == ListaVegetalesConsumidos.get(i).getIdVegetal()) {
                 ListaVegetalesConsumidos.remove(i);
                 return true;
-            }  
+            }
         }
         return false;
     }
     
+    /**
+     * 
+     */
     public void mostrarVegetales() {
         for (int i = 0; i < ListaVegetalesConsumidos.size(); i++) {
-            if (i==0)
-                System.out.print(ListaVegetalesConsumidos.get(i).getNombreVegetal());
-            else
-                System.out.print(", "+ListaVegetalesConsumidos.get(i).getNombreVegetal());
+            System.out.println(ListaVegetalesConsumidos.get(i).getIdVegetal()+"<--"+ListaVegetalesConsumidos.get(i).getNombreVegetal());
         }
     }
     
-    public void calcularImc()   {
+    /**
+     * Calcula el IMC de un usuario y lo guarda en su atributo 'imc'.
+     */
+    public void calcularIMC()   {
         //DecimalFormat formato1 = new DecimalFormat("#.00");
         imc = masa/(Math.pow(altura, 2));
     }
     
-    public double getCaloriasConsumidas(ArrayList<VegetalArchivo> datos) {
+    /**
+     * 
+     * @return 
+     */
+    public double mostrarIMC() {
+        calcularIMC();
+        return imc;
+    }
+    
+    /**
+     * 
+     * @param datos
+     * @return 
+     */
+    public double getSumaCaloriasConsumidas(ArrayList<VegetalArchivo> datos) {
         double sumaCalorias = 0;
         
         for (int i=0; i< ListaVegetalesConsumidos.size(); i++) {

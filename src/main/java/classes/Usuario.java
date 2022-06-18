@@ -10,8 +10,8 @@ package classes;
  */
 public interface Usuario {
     
-    public boolean agregarVegetal(String n, int t);
-    public boolean eliminarVegetal(String n);
+    public boolean agregarVegetal(String nombre, int tipo, int idVegetal);
+    public boolean eliminarVegetal(int idVegetal);
     public void mostrarVegetales();
     
 }

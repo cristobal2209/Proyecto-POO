@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package classes;
 
 /**
@@ -10,14 +7,12 @@ package classes;
  */
 public class VegetalArchivo extends Vegetal{
     
-    private boolean tieneSemilla;
     private double calorias, proteinas, grasas, carbohidratos, porcion;
-    private int idVegetal;
 
-    public VegetalArchivo(int idVegetal, String nombre, int tipo, boolean tieneSemilla, double calorias, double proteinas, double grasas, double carbohidratos, double porcion ) {
+    //constructor
+    public VegetalArchivo(int idVegetal, String nombre, int tipo, double calorias, double proteinas, double grasas, double carbohidratos, double porcion ) {
         this.nombreVegetal = nombre;
         this.tipoVegetal = tipo;
-        this.tieneSemilla = tieneSemilla;
         this.calorias = calorias;
         this.proteinas = proteinas;
         this.grasas = grasas;
@@ -26,10 +21,7 @@ public class VegetalArchivo extends Vegetal{
         this.idVegetal = idVegetal;
     }
 
-    public boolean isTieneSemilla() {
-        return tieneSemilla;
-    }
-
+    //getters
     public double getCalorias() {
         return calorias;
     }
@@ -61,7 +53,4 @@ public class VegetalArchivo extends Vegetal{
     public int getTipoVegetal() {
         return tipoVegetal;
     }
-
-    
-    
 }

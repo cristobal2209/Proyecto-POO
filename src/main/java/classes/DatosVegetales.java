@@ -10,21 +10,26 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 /**
- *
+ * 
  * @author crist
  */
 public class DatosVegetales implements Datos{
     
     private ArrayList<VegetalArchivo> ListaVegetales = new ArrayList<>();
 
+    //constructores
+    public DatosVegetales() {
+    }
+
+    //getters
     public ArrayList<VegetalArchivo> getListaVegetales() {
         return ListaVegetales;
     }
     
     public boolean leerDatos() {
         String nombre;
-        boolean tieneSemilla;
         double calorias, proteinas, grasas, carbohidratos, porcion;
         int idVegetal, tipo;
 
@@ -37,14 +42,13 @@ public class DatosVegetales implements Datos{
                 idVegetal = reader.nextInt();
                 nombre = reader.next();
                 tipo = reader.nextInt();
-                tieneSemilla = reader.nextBoolean();
                 calorias = reader.nextDouble();
                 proteinas = reader.nextDouble();
                 grasas = reader.nextDouble();
                 carbohidratos = reader.nextDouble();
                 porcion = reader.nextDouble();
                 
-                ListaVegetales.add(new VegetalArchivo(idVegetal, nombre, tipo, tieneSemilla, calorias, proteinas, grasas, carbohidratos, porcion));
+                ListaVegetales.add(new VegetalArchivo(idVegetal, nombre, tipo, calorias, proteinas, grasas, carbohidratos, porcion));
             }
             reader.close();
         } catch (FileNotFoundException e) {
@@ -54,9 +58,36 @@ public class DatosVegetales implements Datos{
         return true;
     }
     
+    /**
+     * 
+     */
     public void mostrarDatos() {
         for (int i = 0; i < ListaVegetales.size(); i++) {
             System.out.println("- "+ListaVegetales.get(i).getNombreVegetal());
         }
     }
+    
+    /**
+     * 
+     */
+    public void mostrarIdVegetales() {
+        for (int i = 0; i < ListaVegetales.size(); i++) {
+            System.out.println(ListaVegetales.get(i).getIdVegetal()+"<--"+ListaVegetales.get(i).getNombreVegetal());
+        }
+    }
+    
+    /**
+     * 
+     * @param id
+     * @return 
+     */
+    public int posicionDelIdVegetal(int id) {
+        for (int i = 0; i < ListaVegetales.size(); i++) {
+            if (id == ListaVegetales.get(i).getIdVegetal())
+                return i;
+        }
+        return 0;
+    }
+    
+    //se pueden agregar funciones de agregar nuevos vegetales
 }

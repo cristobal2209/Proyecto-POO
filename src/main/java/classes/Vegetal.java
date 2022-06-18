@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package classes;
 
 /**
@@ -10,5 +7,5 @@ package classes;
  */
 public abstract class Vegetal {
     String nombreVegetal;
-    int tipoVegetal;
+    int tipoVegetal, idVegetal;
 }
