@@ -1,7 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
+
 package classes;
 
 import static GUI.Principal.MAX_VEGETALES;
@@ -12,8 +10,13 @@ import java.util.Scanner;
 
 
 /**
- * 
- * @author crist
+ * Esta clase implementa Datos.
+ * Esta clase provee de los metodos necesarios para manejar un ArrayList de tipo
+ * VegetalArchivo, el cual contiene datos de varios vegetales.
+ * @author Cristóbal Cáceres
+ * @author Pablo Araya
+ * @author René Araya
+ * @Versión 1.0
  */
 public class DatosVegetales implements Datos{
     
@@ -28,6 +31,21 @@ public class DatosVegetales implements Datos{
         return ListaVegetales;
     }
     
+    //metodos
+    /**
+     * IMPORTANTE: Si aparece el mensaje "Ha ocurrido un error de lectura del archivo"
+     * es posible que sea un error de lectura desde el archivo. Para esto se pide
+     * que cambie la ruta en la linea 69 a "src/test/java/datos.txt"
+     * 
+     * Lee los datos de vegetales guardados en un archivo .txt con ruta
+     * src/test/java/(archivo).txt, para luego añadirlos a una lista. Para leer
+     * se emplea un ciclo for que dura según la cantidad definida por MAX_VEGETALES, 
+     * estos valores se pueden cambiar en la clase Principal. En cada ciclo for se 
+     * leen todos los datos de un vegetal, almacenando en un espacio
+     * de la lista el objeto creado.
+     * 
+     * @return true si la lectura fue correcta, false en otro caso
+     */
     public boolean leerDatos() {
         String nombre;
         double calorias, proteinas, grasas, carbohidratos, porcion;
@@ -59,7 +77,7 @@ public class DatosVegetales implements Datos{
     }
     
     /**
-     * 
+     * Muestra los nombres de los vegetales guardados.
      */
     public void mostrarDatos() {
         for (int i = 0; i < ListaVegetales.size(); i++) {
@@ -68,7 +86,7 @@ public class DatosVegetales implements Datos{
     }
     
     /**
-     * 
+     * Muestra los id de los vegetales guardados
      */
     public void mostrarIdVegetales() {
         for (int i = 0; i < ListaVegetales.size(); i++) {
@@ -77,9 +95,9 @@ public class DatosVegetales implements Datos{
     }
     
     /**
-     * 
-     * @param id
-     * @return 
+     * Retorna la posicion en la lista de un vegetal en base a su id
+     * @param id id del vegetal a buscar
+     * @return int con la posicion de un vegetal en la lista
      */
     public int posicionDelIdVegetal(int id) {
         for (int i = 0; i < ListaVegetales.size(); i++) {

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package classes;
 
 import java.io.PrintWriter;
@@ -9,8 +6,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
- * @author crist
+ * Esta clase implementa la clase Registro.
+ * Esta clase provee de metodos para manejar y controlar un ArrayList de tipo
+ * UsuarioAplicacion, el cual guarda los usuarios de la aplicacion.
+ * Aparte de los métodos basicos de crear, eliminar, mostrar y modificar,
+ * se implementa funciones para saber si la lista esta vacia, saber si un usuario existe,
+ * obtener un usuario de la lista y obtener el usuario con menor calorias consumidas.
+ * 
+ * @author Cristóbal Cáceres
+ * @author Pablo Araya
+ * @author René Araya
+ * @Versión 1.0
  */
 public class RegistroUsuariosAplicacion implements Registro{
     
@@ -76,12 +82,11 @@ public class RegistroUsuariosAplicacion implements Registro{
     }
     
     /**
-     * Modifica un atributo de un objeto Usuario que es ingresado por parámetro 
-     * y dependiendo la opción es lo que se modificará. El nuevo dato es ingresado 
-     * por teclado. Si la modificación fue exitosa retorna 'true', en caso contrario 
-     * retorna 'false'.
+     * Modifica un atributo de un objeto Usuario y dependiendo la opción ingresada 
+     * por el usuario es lo que se modificará. El nuevo dato es ingresado 
+     * por teclado.
      * 
-     * @param idUsuarioModificar 
+     * @param idUsuarioModificar id del usuario a modificar
      * @return 'true' si hubo modificación del atributo, 'false' en cualquier otro caso
      */
     public boolean modificarUsuario(int idUsuarioModificar) {
@@ -117,12 +122,12 @@ public class RegistroUsuariosAplicacion implements Registro{
     
     /**
      * Busca y elimina de ListaUsuarios un objeto Usuario. Ingresa por parámetro
-     * el nombre de un usuario a eliminar y con buscarUsuario() se revisa si aquel
+     * el nombre de un usuario a eliminar y con getUsuario() se revisa si aquel
      * usuario existe, en tal caso se recorre ListaUsuarios para saber su posición
      * y una vez encontrado se elimina. En caso que no encuentre un usuario por
      * nombre termina el método.
      * 
-     * @param idUsuarioEliminar
+     * @param idUsuarioEliminar id del usuario a eliminar
      * @return 'true' si se eliminó un usuario, 'false' en cualquier otro caso.
      */
     public boolean eliminarUsuario(int idUsuarioEliminar) {
@@ -157,6 +162,12 @@ public class RegistroUsuariosAplicacion implements Registro{
         return ListaUsuariosApp.isEmpty();
     }
     
+    /**
+     * Busca si existe un usuario con el mismo nombre.
+     * 
+     * @param nombre nombre del usuario a revisar
+     * @return true si existe el usuario, false en cualquier otro caso
+     */
     public boolean getNombreUsuarioExists(String nombre) {
         for (int i = 0; i < ListaUsuariosApp.size(); i++) {
             if (nombre.equalsIgnoreCase(ListaUsuariosApp.get(i).getNombre()))
@@ -166,8 +177,9 @@ public class RegistroUsuariosAplicacion implements Registro{
     }
     
     /**
+     * Imprime las opciones a modificar, permitiendo ingresar por teclado la opcion
      * 
-     * @return 
+     * @return int con la opcion a modificar
      */
     public int opcionesModificarUsuario() {
         Scanner input = new Scanner(System.in);
@@ -229,12 +241,10 @@ public class RegistroUsuariosAplicacion implements Registro{
     }
     
     /**
-     * Busca y retorna un objeto Usuario dentro de ListaUsuarios, con el
-     * atributo 'nombre' del objeto se compara con el parámetro "nombre" 
-     * ingresado mientras se recorre la lista. Si el usuario existe lo retorna, 
-     * en cualquier otro caso retorna null.
+     * Busca y retorna un objeto Usuario dentro de ListaUsuarios, con el id del usuario
+     * .Si el usuario existe lo retorna, en cualquier otro caso retorna null.
      * 
-     * @param idUsuario
+     * @param idUsuario id del usuario a buscar
      * @return el objecto Usuario que coincidió con el parámetro nombre, null 
      *         en cualquier otro caso
      */
@@ -247,11 +257,11 @@ public class RegistroUsuariosAplicacion implements Registro{
     }
     
     /**
-     * 
+     * Muestra los id de los usuarios en formato "idUs nombreUs"
      */
     public void mostrarIdUsuarios() {
         for (int i = 0; i < ListaUsuariosApp.size(); i++) {
-            System.out.println(ListaUsuariosApp.get(i).getIdUsuario()+" "+ListaUsuariosApp.get(i).getNombre());
+            System.out.println(ListaUsuariosApp.get(i).getIdUsuario()+"<--"+ListaUsuariosApp.get(i).getNombre());
         }
     }
 }

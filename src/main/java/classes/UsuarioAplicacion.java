@@ -4,8 +4,16 @@ package classes;
 import java.util.ArrayList;
 
 /**
- *
- * @author crist
+ * Esta clase implementa la clase Usuario.
+ * Esta clase provee de metodos para manejar y controlar un ArrayList de tipo
+ * VegetalUsuario, el cual guarda los vegetaes consumidos por un usuario.
+ * Aparte de los métodos basicos de crear, eliminar, mostrar y modificar,
+ * se implementa funciones para calcular el IMC de un usuario y las calorías consumidas.
+ * 
+ * @author Cristóbal Cáceres
+ * @author Pablo Araya
+ * @author René Araya
+ * @Versión 1.0
  */
 public class UsuarioAplicacion implements Usuario {
     
@@ -15,6 +23,14 @@ public class UsuarioAplicacion implements Usuario {
     private int idUsuario;
 
     //constructores
+    /**
+     * 
+     * @param idUsuario id unico de cada usuario
+     * @param nombre nombre del usuario
+     * @param sexo sexo del usuario, se ocupa para efectos de calculo del IMC
+     * @param masa "peso" o masa en kilogramos del usuario
+     * @param altura  estatura en metros del usuario
+     */
     public UsuarioAplicacion(int idUsuario, String nombre, String sexo, double masa, double altura) {
         this.nombre = nombre;
         this.sexo = sexo;
@@ -85,10 +101,10 @@ public class UsuarioAplicacion implements Usuario {
      * Crea y añade un nuevo objeto VegetalUsuario consumido a la lista ListaVegetalesConsumidos 
      * de un usuario.
      * 
-     * @param nombreVegetal
-     * @param tipo
-     * @param idVegetal
-     * @return 
+     * @param nombreVegetal nombre del vegetal a guardar
+     * @param tipo tipo del vegetal a guardar
+     * @param idVegetal id único del vegetal a guardar
+     * @return true si fue agregado el nuevo usuario, false en cualquier otro caso
      */
     public boolean agregarVegetal(String nombreVegetal, int tipo, int idVegetal) {
         if(ListaVegetalesConsumidos.add(new VegetalUsuario(nombreVegetal, tipo, idVegetal)))
@@ -97,9 +113,12 @@ public class UsuarioAplicacion implements Usuario {
     }
     
     /**
+     * Elimina un vegetal consumido de un usuario en base a un id de vegetal entregado.
+     * Para esto recorre la colección de vegetales consumidos y compara el id de un objeto
+     * de la lista con el id entregado, si son iguales, se remueve el objeto de la lista.
      * 
-     * @param idVegetalEliminar
-     * @return 
+     * @param idVegetalEliminar id del vegetal a eliminar
+     * @return true si el objeto fue eliminado, false en cualquier otro caso
      */
     public boolean eliminarVegetal(int idVegetalEliminar) {
         for (int i = 0; i < ListaVegetalesConsumidos.size(); i++) {
@@ -112,7 +131,7 @@ public class UsuarioAplicacion implements Usuario {
     }
     
     /**
-     * 
+     * Muestra los vegetales consumidos de un usuario en formato "idVeg NombreVeg".
      */
     public void mostrarVegetales() {
         for (int i = 0; i < ListaVegetalesConsumidos.size(); i++) {
@@ -129,8 +148,9 @@ public class UsuarioAplicacion implements Usuario {
     }
     
     /**
+     * Calcula y obtiene el IMC del usuario.
      * 
-     * @return 
+     * @return double con el IMC calculado.
      */
     public double mostrarIMC() {
         calcularIMC();
@@ -138,9 +158,11 @@ public class UsuarioAplicacion implements Usuario {
     }
     
     /**
+     * Método que calcula las calorias consumidas de un usuario, sumando las calorías
+     * de los vegetales ingeridos.
      * 
-     * @param datos
-     * @return 
+     * @param datos ArrayList de VegetalArchivo el cual contiene los datos de los vegetales.
+     * @return una variable double con la sumatoria de las calorías ingeridas.
      */
     public double getSumaCaloriasConsumidas(ArrayList<VegetalArchivo> datos) {
         double sumaCalorias = 0;

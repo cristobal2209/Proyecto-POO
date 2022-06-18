@@ -1,6 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+/**
+ * **********COMENTARIO ENTREGA**********
+ * PB2: Las interfaces graficas que se incluyeron son: el menu principal, el menu
+ * usuario y el panel para mostrar el IMC de un usuario (linea 184 de MenuUsuario).
+ * PB3: Se pusieon en privado todos los atributos de los objetos, exceptuando los atibutos
+ * de las clases que se extienden de una clase abstracta. Se ocupó el principio DIP, 
+ * buscando crear interfaces polivantes para nuestro problema, y tratando de adecuar
+ * las clases que implementaban estas interfaces a dicha interface, buscando que los cambios
+ * ocurrieran en la clase y no en la interface.
+ * 
+ * 
+ * La función de este programa es manejar y seguir la dieta de frutas y verduras de 
+ * diferentes usuarios, otorgando herramientas como el cálculo de IMC, cálculo
+ * de información nutrucional de vegetales ingeridos, creación de documentos y
+ * futuras opciones que se planean implementar, como por ejemplo: mostrar
+ * información adicional y curiosa de cada vegetal, como plantar dicho vegetal y alertas
+ * de exceso o falta de algún nutriente.
+ * 
+ * @author Cristóbal Cáceres
+ * @author Pablo Araya
+ * @author René Araya
+ * @version 1.0
  */
 package GUI;
 
@@ -9,8 +28,12 @@ import classes.RegistroUsuariosAplicacion;
 import java.util.Scanner;
 
 /**
- *
- * @author crist
+ * Esta clase tiene el deber de controlar lo que sucede en el programa, cumpliendo
+ * tambien el papel de ser la interfaz de un menu principal.
+ * @author Cristóbal Cáceres
+ * @author Pablo Araya
+ * @author René Araya
+ * @Versión 1.0
  */
 public class Principal extends javax.swing.JFrame {
 

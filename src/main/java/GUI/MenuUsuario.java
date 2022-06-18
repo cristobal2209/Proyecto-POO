@@ -10,8 +10,13 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author crist
+ * Esta clase tiene el rol de ser la interfaz para un menu de usuario, dando varias opciones
+ * de interaccion con el programa.
+ * 
+ * @author Cristóbal Cáceres
+ * @author Pablo Araya
+ * @author René Araya
+ * @version 1.0
  */
 public class MenuUsuario extends javax.swing.JFrame {
 
