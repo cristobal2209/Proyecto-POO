@@ -2,10 +2,11 @@
  * **********COMENTARIO ENTREGA**********
  * PB2: Las interfaces graficas que se incluyeron son: el menu principal, el menu
  * usuario y el panel para mostrar el IMC de un usuario (linea 184 de MenuUsuario).
- * PB3: Se pusieon en privado todos los atributos de los objetos, exceptuando los atibutos
- * de las clases que se extienden de una clase abstracta. Se ocupó el principio DIP, 
- * buscando crear interfaces polivantes para nuestro problema, y tratando de adecuar
- * las clases que implementaban estas interfaces a dicha interface, buscando que los cambios
+ * PB3: Se pusieron en privado todos los atributos de los objetos, exceptuando los atibutos
+ * de las clases que se extienden de una clase abstracta, además se pusieron en privado
+ * algunos métodos de Principal que no era necesario que estuvieran en publico. 
+ * Se ocupó el principio DIP, creando interfaces polivantes para nuestro problema, y tratando de modelar
+ * las clases que implementaban estas interfaces, a dicha interface, buscando que los cambios
  * ocurrieran en la clase y no en la interface.
  * 
  * 
