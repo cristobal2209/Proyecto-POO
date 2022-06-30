@@ -1,6 +1,8 @@
 
 package classes;
 
+import Abstracts.Vegetal;
+
 /** 
  * Esta clase se extiende de la clase abstracta Vegetal, obteniendo los atributos
  * nombreVegetal, tipoVegetal e idVegetal. La función de esta clase es proveer
@@ -17,47 +19,53 @@ public class VegetalArchivo extends Vegetal{
     private double calorias, proteinas, grasas, carbohidratos, porcion;
 
     //constructor
-    public VegetalArchivo(int idVegetal, String nombre, int tipo, double calorias, double proteinas, double grasas, double carbohidratos, double porcion ) {
-        this.nombreVegetal = nombre;
-        this.tipoVegetal = tipo;
+    public VegetalArchivo(int idVegetal, String nombreVegetal, int tipoVegetal, double calorias, double proteinas, double grasas, double carbohidratos, double porcion ) {
+        super(nombreVegetal, tipoVegetal, idVegetal);
         this.calorias = calorias;
         this.proteinas = proteinas;
         this.grasas = grasas;
         this.carbohidratos = carbohidratos;
         this.porcion = porcion;
-        this.idVegetal = idVegetal;
     }
 
-    //getters
     public double getCalorias() {
         return calorias;
+    }
+
+    public void setCalorias(double calorias) {
+        this.calorias = calorias;
     }
 
     public double getProteinas() {
         return proteinas;
     }
 
+    public void setProteinas(double proteinas) {
+        this.proteinas = proteinas;
+    }
+
     public double getGrasas() {
         return grasas;
+    }
+
+    public void setGrasas(double grasas) {
+        this.grasas = grasas;
     }
 
     public double getCarbohidratos() {
         return carbohidratos;
     }
 
+    public void setCarbohidratos(double carbohidratos) {
+        this.carbohidratos = carbohidratos;
+    }
+
     public double getPorcion() {
         return porcion;
     }
 
-    public int getIdVegetal() {
-        return idVegetal;
+    public void setPorcion(double porcion) {
+        this.porcion = porcion;
     }
 
-    public String getNombreVegetal() {
-        return nombreVegetal;
-    }
-
-    public int getTipoVegetal() {
-        return tipoVegetal;
-    }
 }

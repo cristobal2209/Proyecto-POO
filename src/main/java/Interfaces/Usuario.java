@@ -1,5 +1,5 @@
 
-package classes;
+package Interfaces;
 
 /**
  * Esta interfaz provee de los siguientes metodos para poder manejar una colección

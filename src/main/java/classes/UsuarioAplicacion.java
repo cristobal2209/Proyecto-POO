@@ -1,6 +1,7 @@
 
 package classes;
 
+import Interfaces.Usuario;
 import java.util.ArrayList;
 
 /**
@@ -18,7 +19,8 @@ import java.util.ArrayList;
 public class UsuarioAplicacion implements Usuario {
     
     private ArrayList<VegetalUsuario> ListaVegetalesConsumidos = new ArrayList<>();
-    private String nombre, sexo;
+    private String nombre;
+    private char sexo;
     private double masa, altura, imc=0;
     private int idUsuario;
 
@@ -31,7 +33,7 @@ public class UsuarioAplicacion implements Usuario {
      * @param masa "peso" o masa en kilogramos del usuario
      * @param altura  estatura en metros del usuario
      */
-    public UsuarioAplicacion(int idUsuario, String nombre, String sexo, double masa, double altura) {
+    public UsuarioAplicacion(int idUsuario, String nombre, char sexo, double masa, double altura) {
         this.nombre = nombre;
         this.sexo = sexo;
         this.masa = masa;
@@ -51,7 +53,7 @@ public class UsuarioAplicacion implements Usuario {
         return nombre;
     }
 
-    public String getSexo() {
+    public char getSexo() {
         return sexo;
     }
 
@@ -76,7 +78,7 @@ public class UsuarioAplicacion implements Usuario {
         this.nombre = nombre;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(char sexo) {
         this.sexo = sexo;
     }
 
@@ -139,22 +141,12 @@ public class UsuarioAplicacion implements Usuario {
         }
     }
     
-    /**
+        /**
      * Calcula el IMC de un usuario y lo guarda en su atributo 'imc'.
      */
     public void calcularIMC()   {
         //DecimalFormat formato1 = new DecimalFormat("#.00");
         imc = masa/(Math.pow(altura, 2));
-    }
-    
-    /**
-     * Calcula y obtiene el IMC del usuario.
-     * 
-     * @return double con el IMC calculado.
-     */
-    public double mostrarIMC() {
-        calcularIMC();
-        return imc;
     }
     
     /**

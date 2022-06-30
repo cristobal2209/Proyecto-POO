@@ -2,6 +2,7 @@
 
 package classes;
 
+import Interfaces.Datos;
 import static GUI.Principal.MAX_VEGETALES;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,7 +17,7 @@ import java.util.Scanner;
  * @author Cristóbal Cáceres
  * @author Pablo Araya
  * @author René Araya
- * @Versión 1.0
+ * @Versión 1.1
  */
 public class DatosVegetales implements Datos{
     
@@ -54,7 +55,8 @@ public class DatosVegetales implements Datos{
         //definiendo archivo
         File archivo = new File("src/test/java/datos2.txt");
             
-        try (Scanner reader = new Scanner(archivo)) {
+        try {
+            Scanner reader = new Scanner(archivo);
             //leyendo datos de verduras
             for (int i=0; i < MAX_VEGETALES; i++) {
                 idVegetal = reader.nextInt();
@@ -70,7 +72,7 @@ public class DatosVegetales implements Datos{
             }
             reader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Ha ocurrido un error de lectura del archivo");
+            System.out.println("La ruta del archivo no existe");
             return false;
         }
         return true;

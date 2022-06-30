@@ -1,6 +1,8 @@
 
 package classes;
 
+import Interfaces.Usuario;
+import Interfaces.Registro;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -21,6 +23,7 @@ import java.util.Scanner;
 public class RegistroUsuariosAplicacion implements Registro{
     
     private ArrayList<UsuarioAplicacion> ListaUsuariosApp = new ArrayList<>();
+    private Validaciones validaciones = new Validaciones();    
     private ArrayList<VegetalArchivo> datos;
     private int idUsuario=0;
 
@@ -58,26 +61,27 @@ public class RegistroUsuariosAplicacion implements Registro{
      *         ya existía un usuario con el nombre ingresado
      */
     public boolean crearUsuario() {
-        String sexo, nombre;
+        
+        String nombre;
+        char sexo;
         double masa, altura;
-        Scanner input = new Scanner(System.in);
         
         System.out.println("Ingresa tu nombre");
-        nombre = input.next();
+        nombre = validaciones.validarStringVacio();
         if (!getNombreUsuarioExists(nombre)) {
             System.out.println("Ingresa tu peso en kilogramos");
-            masa = input.nextDouble();
+            masa = validaciones.validarDouble();
             System.out.println("Ingresa tu altura en metros");
-            altura = input.nextDouble();
+            altura = validaciones.validarDouble();
             System.out.println("¿Tu sexo es femenino (F) o masculino (M)?");
-            sexo = input.next();
+            sexo = validaciones.validarChar();
         
             //cuando se agrega un objeto a la lista, sube el contador del id
             idUsuario++;
             ListaUsuariosApp.add(new UsuarioAplicacion(idUsuario, nombre, sexo, masa, altura));
-
             return true;
         }
+        System.out.println("Un usuario con ese nombre ya se encuentra registrado");
         return false;
     }
     
@@ -90,7 +94,6 @@ public class RegistroUsuariosAplicacion implements Registro{
      * @return 'true' si hubo modificación del atributo, 'false' en cualquier otro caso
      */
     public boolean modificarUsuario(int idUsuarioModificar) {
-        Scanner input = new Scanner(System.in);
         UsuarioAplicacion usuarioModificar = getUsuario(idUsuarioModificar);
         
         int opcion = opcionesModificarUsuario();
@@ -99,19 +102,19 @@ public class RegistroUsuariosAplicacion implements Registro{
             //modifica el nombre
             case 1:
                 System.out.println("Ingresa nuevo nombre");
-                usuarioModificar.setNombre(input.next());
+                usuarioModificar.setNombre(validaciones.validarStringVacio());
                 return true;
     			
             //modifica la masa
             case 2:
                 System.out.println("Ingresa nuevo peso");
-                usuarioModificar.setMasa(input.nextDouble());
+                usuarioModificar.setMasa(validaciones.validarDouble());
                 return true;
     			
             //modifica la altura
             case 3:
                 System.out.println("Ingresa nueva altura");
-                usuarioModificar.setAltura(input.nextDouble());
+                usuarioModificar.setAltura(validaciones.validarDouble());
                 return true;
     			
             default:
@@ -189,7 +192,7 @@ public class RegistroUsuariosAplicacion implements Registro{
         System.out.println("2...Peso");
         System.out.println("3...Altura");
         
-        return input.nextInt();
+        return validaciones.validarInt();
     }
     
     /**
@@ -215,7 +218,7 @@ public class RegistroUsuariosAplicacion implements Registro{
             writer.close();
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            e.getMessage();
             return false;
         }
     }

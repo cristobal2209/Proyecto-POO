@@ -1,14 +1,10 @@
 /**
  * **********COMENTARIO ENTREGA**********
- * PB2: Las interfaces graficas que se incluyeron son: el menu principal, el menu
- * usuario y el panel para mostrar el IMC de un usuario (linea 184 de MenuUsuario).
- * PB3: Se pusieron en privado todos los atributos de los objetos, exceptuando los atibutos
- * de las clases que se extienden de una clase abstracta, además se pusieron en privado
- * algunos métodos de Principal que no era necesario que estuvieran en publico. 
- * Se ocupó el principio DIP, creando interfaces polivantes para nuestro problema, y tratando de modelar
- * las clases que implementaban estas interfaces, a dicha interface, buscando que los cambios
- * ocurrieran en la clase y no en la interface.
- * 
+ * EF2: Se hizo una clase Validaciones donde cada método tiene un bloque try-catch
+ * especifico para un tipo de dato. Cada método se ocupó en los casos en que el usuario
+ * debía ingresar algo por teclado.
+ * EF3: Se crearon las excepciones StringEmptyException (se ocupa en la linea 55
+ * de Validaciones) y WrongCharException (se ocupa en la linea 38 de Validaciones)
  * 
  * La función de este programa es manejar y seguir la dieta de frutas y verduras de 
  * diferentes usuarios, otorgando herramientas como el cálculo de IMC, cálculo
@@ -26,7 +22,7 @@ package GUI;
 
 import classes.DatosVegetales;
 import classes.RegistroUsuariosAplicacion;
-import java.util.Scanner;
+import classes.Validaciones;
 
 /**
  * Esta clase tiene el deber de controlar lo que sucede en el programa, cumpliendo
@@ -43,6 +39,7 @@ public class Principal extends javax.swing.JFrame {
     private static RegistroUsuariosAplicacion usuarios;
     private static Principal ventanaPrincipal;
     private static MenuUsuario ventanaUsuario;
+    private static Validaciones validaciones;
     
     /**
      * Creates new form Principal
@@ -179,27 +176,26 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnEliminarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarUsuariosActionPerformed
 
-        Scanner input = new Scanner(System.in);
-        
-        ventanaPrincipal.setVisible(false);
-        usuarios.mostrarIdUsuarios();
-        System.out.println("Ingrese id del usuario a eliminar");
-        if (usuarios.eliminarUsuario(input.nextInt()))
-            System.out.println("Usuario eliminado");
-        else
-            System.out.println("No se elimino el usuario");
-        ventanaPrincipal.setVisible(true);
+        if (!usuarios.getListaIsEmpty()) {
+            ventanaPrincipal.setVisible(false);
+            usuarios.mostrarIdUsuarios();
+            System.out.println("Ingrese id del usuario a eliminar");
+            if (usuarios.eliminarUsuario(validaciones.validarInt()))
+                System.out.println("Usuario eliminado");
+            else
+                System.out.println("No se elimino el usuario");
+            ventanaPrincipal.setVisible(true);
+        } else {
+            System.out.println("No hay usuarios registrados");
+        }
     }//GEN-LAST:event_btnEliminarUsuariosActionPerformed
 
     private void btnAccesUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccesUsuariosActionPerformed
         ventanaPrincipal.setVisible(false);
-        Scanner input = new Scanner(System.in);
         usuarios.mostrarIdUsuarios();
         System.out.println("Ingrese id del usuario a acceder");
-        ventanaUsuario.setUsuario(usuarios.getUsuario(input.nextInt()));
-        ventanaUsuario.setDatos(datos);
-        ventanaUsuario.setVentanaUsuario(ventanaUsuario);
-        ventanaUsuario.setVentanaPrincipal(ventanaPrincipal);
+        ventanaUsuario.setUsuario(usuarios.getUsuario(validaciones.validarInt()));
+        
         ventanaUsuario.setVisible(true);
         
     }//GEN-LAST:event_btnAccesUsuariosActionPerformed
@@ -209,7 +205,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVerUsuariosActionPerformed
 
     private void btnArchivoUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArchivoUsuariosActionPerformed
-        usuarios.crearArchivoUsuarios();
+        if (usuarios.crearArchivoUsuarios())
+            System.out.println("Archivo creado");
     }//GEN-LAST:event_btnArchivoUsuariosActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
@@ -220,11 +217,14 @@ public class Principal extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+        validaciones = new Validaciones();
         ventanaPrincipal = new Principal();
         ventanaUsuario = new MenuUsuario();
         datos = new DatosVegetales();
         usuarios = new RegistroUsuariosAplicacion();
+        ventanaUsuario.setDatos(datos);
+        ventanaUsuario.setVentanaUsuario(ventanaUsuario);
+        ventanaUsuario.setVentanaPrincipal(ventanaPrincipal);
         
         if (datos.leerDatos())
             System.out.println("Lectura de datos correcta");

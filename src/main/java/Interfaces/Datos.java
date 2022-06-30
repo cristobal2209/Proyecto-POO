@@ -1,5 +1,5 @@
 
-package classes;
+package Interfaces;
 
 /**
  * Esta interface estandariza que metodos debe tener una clase que maneja datos.

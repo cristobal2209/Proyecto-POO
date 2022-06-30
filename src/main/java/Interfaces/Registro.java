@@ -1,5 +1,5 @@
 
-package classes;
+package Interfaces;
 
 /**
  * Esta interfaz estandariza para cualquier registro los metodos que se necesitan

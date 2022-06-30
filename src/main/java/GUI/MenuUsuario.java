@@ -6,7 +6,7 @@ package GUI;
 
 import classes.DatosVegetales;
 import classes.UsuarioAplicacion;
-import java.util.Scanner;
+import classes.Validaciones;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,6 +24,7 @@ public class MenuUsuario extends javax.swing.JFrame {
     private DatosVegetales datos;
     private MenuUsuario ventanaUsuario;
     private Principal ventanaPrincipal;
+    private Validaciones validaciones = new Validaciones();
     
     /**
      * Creates new form MenuUsuario
@@ -80,7 +81,7 @@ public class MenuUsuario extends javax.swing.JFrame {
             }
         });
 
-        btnMostrarVegetales.setText("Mostrar Vegetales");
+        btnMostrarVegetales.setText("Vegetales Consumidos");
         btnMostrarVegetales.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMostrarVegetalesActionPerformed(evt);
@@ -125,7 +126,7 @@ public class MenuUsuario extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnAtras)))
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,10 +152,11 @@ public class MenuUsuario extends javax.swing.JFrame {
     private void btnAgregarVegetalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarVegetalActionPerformed
         
         ventanaUsuario.setVisible(false);
-        int idVeg = leerIdVeg();
-        idVeg = datos.posicionDelIdVegetal(idVeg);
+        datos.mostrarIdVegetales();
+        int idVeg= validaciones.validarInt();
+        int posVeg = datos.posicionDelIdVegetal(idVeg);
         
-        if (usuario.agregarVegetal(datos.getListaVegetales().get(idVeg).getNombreVegetal(), datos.getListaVegetales().get(idVeg).getTipoVegetal(), idVeg+1))
+        if (usuario.agregarVegetal(datos.getListaVegetales().get(posVeg).getNombreVegetal(), datos.getListaVegetales().get(posVeg).getTipoVegetal(), posVeg+1))
             System.out.println("Vegetal agregado");
         else
             System.out.println("Vegetal no agregado");
@@ -169,8 +171,9 @@ public class MenuUsuario extends javax.swing.JFrame {
     private void btnEliminarVegetalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarVegetalActionPerformed
 
         ventanaUsuario.setVisible(false);
-        int idVeg = mostrarIdVegConsumidos();
-        
+        usuario.mostrarVegetales();
+        System.out.println("Ingresa un ID de un vegetal a eliminar");
+        int idVeg = validaciones.validarInt();
         if (usuario.eliminarVegetal(idVeg))
             System.out.println("Vegetal eliminado");
         else
@@ -183,59 +186,25 @@ public class MenuUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMostrarVegetalesActionPerformed
 
     private void btnMostrarIMCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarIMCActionPerformed
-        double imc = usuario.mostrarIMC();
+        usuario.calcularIMC();
+        double imc = usuario.getImc();
         imc = Math.round(imc);
         String IMC = Double.toString(imc);
         JOptionPane.showMessageDialog(null, "Tu IMC es "+IMC);
     }//GEN-LAST:event_btnMostrarIMCActionPerformed
 
     private void btnMostrarCalConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarCalConActionPerformed
-        System.out.println(usuario.getSumaCaloriasConsumidas(datos.getListaVegetales())+" Calorias");;
+        double calorias = usuario.getSumaCaloriasConsumidas(datos.getListaVegetales());
+        String strCalorias = Double.toString(calorias);
+        JOptionPane.showMessageDialog(null, "Tus calorías consumidas son "+strCalorias+"kcal");
     }//GEN-LAST:event_btnMostrarCalConActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-    }
-
-    private int leerIdVeg() {
-        Scanner input = new Scanner(System.in);
         
-        datos.mostrarIdVegetales();
-        System.out.println("Ingresa un ID de un vegetal");
-        return input.nextInt();
-    }
-    
-    private int mostrarIdVegConsumidos() {
-        Scanner input = new Scanner(System.in);
-        
-        usuario.mostrarVegetales();
-        System.out.println("Ingresa un ID de un vegetal");
-        return input.nextInt();
+
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -40,7 +40,7 @@
                       <Component id="btnAtras" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="100" max="32767" attributes="0"/>
+              <EmptySpace pref="91" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -83,7 +83,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnMostrarVegetales">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Mostrar Vegetales"/>
+        <Property name="text" type="java.lang.String" value="Vegetales Consumidos"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMostrarVegetalesActionPerformed"/>
