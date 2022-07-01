@@ -30,7 +30,7 @@ import classes.Validaciones;
  * @author Cristóbal Cáceres
  * @author Pablo Araya
  * @author René Araya
- * @Versión 1.0
+ * @version 1.0
  */
 public class Principal extends javax.swing.JFrame {
 
