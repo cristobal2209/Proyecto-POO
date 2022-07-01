@@ -8,7 +8,7 @@ package Abstracts;
  * @author Cristóbal Cáceres
  * @author Pablo Araya
  * @author René Araya
- * @Versión 1.1
+ * @version 1.2
  */
 public abstract class Vegetal {
     private String nombreVegetal;

@@ -6,10 +6,25 @@ import CustomExceptions.WrongCharException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Validaciones provee de diferentes métodos para poder validar la entrada por teclado
+ * de diferentes tipos de datos.
+ * 
+ * @author Cristóbal Cáceres
+ * @author Pablo Araya
+ * @author René Araya
+ * @version 1.0
+ */
 public class Validaciones {
     private Scanner sc;
     private int flag;
     
+    /**
+     * valida la entrada de un numero double, en caso de que se ingrese un
+     * tipo de dato diferente a double, preguntará de nuevo.
+     * 
+     * @return double leído
+     */
     public double validarDouble() {
         double numDoub=0;
         do {
@@ -25,6 +40,12 @@ public class Validaciones {
         return numDoub;
     }
     
+    /**
+     * valida la entrada de un char, en caso de que se ingrese un
+     * tipo de dato diferente a char, preguntará de nuevo.
+     * 
+     * @return char leído
+     */
     public char validarChar() {
         char caracter='a';
         do {
@@ -43,6 +64,12 @@ public class Validaciones {
         return caracter;
     }
     
+    /**
+     * valida que un string ingresado no sea vacío, en caso de que se ingrese un
+     * string vacío, preguntará de nuevo.
+     * 
+     * @return String leído
+     */
     public String validarStringVacio() {
         String str=null;
         do {
@@ -60,6 +87,12 @@ public class Validaciones {
         return str;
     }
     
+    /**
+     * valida la entrada de un numero int, en caso de que se ingrese un
+     * tipo de dato diferente a int, preguntará de nuevo.
+     * 
+     * @return int leído
+     */
     public int validarInt() {
         int numInt=0;
         do {

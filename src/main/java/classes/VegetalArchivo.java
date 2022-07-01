@@ -12,7 +12,7 @@ import Abstracts.Vegetal;
  * @author Cristóbal Cáceres
  * @author Pablo Araya
  * @author René Araya
- * @Versión 1.0
+ * @version 1.0
  */
 public class VegetalArchivo extends Vegetal{
     

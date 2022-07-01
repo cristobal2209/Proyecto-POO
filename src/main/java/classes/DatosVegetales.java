@@ -17,7 +17,7 @@ import java.util.Scanner;
  * @author Cristóbal Cáceres
  * @author Pablo Araya
  * @author René Araya
- * @Versión 1.1
+ * @version 1.1
  */
 public class DatosVegetales implements Datos{
     
