@@ -153,7 +153,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         int idVeg= validaciones.validarInt();
         int posVeg = datos.posicionDelIdVegetal(idVeg);
         
-        if (usuario.agregarVegetal(datos.getListaVegetales().get(posVeg).getNombreVegetal(), datos.getListaVegetales().get(posVeg).getTipoVegetal(), posVeg+1))
+        if (usuario.agregarVegetal(datos.getListaVegetales().get(posVeg).getNombreVegetal(), datos.getListaVegetales().get(posVeg).getTipoVegetal(), idVeg))
             System.out.println("Vegetal agregado");
         else
             System.out.println("Vegetal no agregado");

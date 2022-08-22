@@ -134,7 +134,7 @@ public class RegistroUsuariosAplicacion implements Registro{
      * @return 'true' si se eliminó un usuario, 'false' en cualquier otro caso.
      */
     public boolean eliminarUsuario(int idUsuarioEliminar) {
-        if (getUsuario(idUsuario) != null) {
+        if (getUsuario(idUsuarioEliminar) != null) {
             for (int i=0; i < ListaUsuariosApp.size(); i++) {
                 if (ListaUsuariosApp.get(i).getIdUsuario() == idUsuarioEliminar) {
                     ListaUsuariosApp.remove(i);
